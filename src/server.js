@@ -4,6 +4,7 @@ const morgan = require("morgan");
 require("dotenv").config();
 
 const { productsRouter } = require("./routers/productsRouter");
+const { authRouter } = require("./routers/authRouters");
 
 const { connectMongo } = require("./db/connect");
 const { HTTP_PORT } = require("./helpers/constants");
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(morgan("tiny"));
 
 app.use("/products", productsRouter);
+app.use("/auth", authRouter);
 
 (async () => {
   try {
