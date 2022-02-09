@@ -1,0 +1,90 @@
+[
+  {
+    "tag": "hair",
+    "category": "Для волос",
+    "brand": "X",
+    "name": "Шампунь для волос",
+    "description": "Этот шампунь подойдет для людей с ломкими волосами",
+    "image": "https://drive.google.com/file/d/13HW7Ac32RAtLcV5RqtHpL_0FttBb0wDg/view?usp=sharing",
+    "price": 200,
+    "promotion": false,
+    "discount": 0
+  },
+  {
+    "tag": "body",
+    "category": "Для тела",
+    "brand": "Y",
+    "name": "Ласьон для тела",
+    "description": "Этот ласьон подойдет для людей с проблемной кожей",
+    "image": "https://drive.google.com/file/d/13HW7Ac32RAtLcV5RqtHpL_0FttBb0wDg/view?usp=sharing",
+    "price": 300,
+    "promotion": true,
+    "discount": 10
+  },
+  {
+    "tag": "decor",
+    "category": "Декоративная косметика",
+    "brand": "Z",
+    "name": "Декоративная штука",
+    "description": "Это очень крутая декоративная штука",
+    "image": "https://drive.google.com/file/d/13HW7Ac32RAtLcV5RqtHpL_0FttBb0wDg/view?usp=sharing",
+    "price": 300,
+    "promotion": true,
+    "discount": 10
+  },
+  {
+    "tag": "eyes",
+    "category": "Для глаз",
+    "brand": "Z",
+    "name": "Штука для глаз",
+    "description": "Это очень крутая штука для глаз",
+    "image": "https://drive.google.com/file/d/13HW7Ac32RAtLcV5RqtHpL_0FttBb0wDg/view?usp=sharing",
+    "price": 230,
+    "promotion": false,
+    "discount": 0
+  },
+  {
+    "tag": "face",
+    "category": "Для лица",
+    "brand": "Z",
+    "name": "Штука для лица",
+    "description": "Это очень крутая штука для лица",
+    "image": "https://drive.google.com/file/d/13HW7Ac32RAtLcV5RqtHpL_0FttBb0wDg/view?usp=sharing",
+    "price": 130,
+    "promotion": false,
+    "discount": 0
+  },
+  {
+    "tag": "mouth",
+    "category": "Для полости рта",
+    "brand": "XYZ",
+    "name": "Штука для рта",
+    "description": "Это очень крутая штука для рта",
+    "image": "https://drive.google.com/file/d/13HW7Ac32RAtLcV5RqtHpL_0FttBb0wDg/view?usp=sharing",
+    "price": 250,
+    "promotion": false,
+    "discount": 0
+  },
+  {
+    "tag": "face",
+    "category": "Для лица",
+    "brand": "Z",
+    "name": "Еще штука для лица",
+    "description": "Супер штука для лица",
+    "image": "https://drive.google.com/file/d/13HW7Ac32RAtLcV5RqtHpL_0FttBb0wDg/view?usp=sharing",
+    "price": 130,
+    "promotion": false,
+    "discount": 0
+  },
+  {
+    "tag": "mouth",
+    "category": "Для полости рта",
+    "brand": "XYZ",
+    "name": "Ротоочиститель мощный",
+    "description": "Очищает кариес вместе с зубами",
+    "image": "https://drive.google.com/file/d/13HW7Ac32RAtLcV5RqtHpL_0FttBb0wDg/view?usp=sharing",
+    "price": 250,
+    "promotion": false,
+    "discount": 0
+  }
+]

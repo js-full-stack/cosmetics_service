@@ -9,7 +9,7 @@ const userShema = new Schema(
       minlength: 5,
       maxlength: 20,
       required: [true, "Email is required"],
-      unique: true,
+      unique: [true, "User with this email alredy exist"],
     },
 
     password: {

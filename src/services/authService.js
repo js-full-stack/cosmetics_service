@@ -6,6 +6,7 @@ const { User } = require("../db/authShema");
 
 const regService = async (email, password) => {
   const user = new User({ email, password });
+
   await user.save();
 };
 
