@@ -1,21 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const { asyncWrapper } = require("../helpers/apiHelpers");
-const { authMiddlware } = require("../helpers/authMiddlware");
+const guard = require("../helpers/guard");
 
 const {
-  fetchProductsController,
-  addProductController,
-  getProductByIdController,
-  updateProductByIdController,
-  deleteProductByIdController,
-} = require("../controllers/cosmeticsStoreController");
+  fetchProducts,
+  addProduct,
+  getProductById,
+  updateProduct,
+  deleteProduct,
+} = require("../controllers/products");
 
-router.use(authMiddlware);
-
-router.get("/", asyncWrapper(fetchProductsController));
-router.get("/:id", asyncWrapper(getProductByIdController));
-router.post("/", asyncWrapper(addProductController));
-router.put("/:id", asyncWrapper(updateProductByIdController));
-router.delete("/:id", asyncWrapper(deleteProductByIdController));
+router.get("/", asyncWrapper(fetchProducts));
+router.get("/:id", asyncWrapper(addProduct));
+router.post("/", guard, asyncWrapper(getProductById));
+router.put("/:id", guard, asyncWrapper(updateProduct));
+router.delete("/:id", guard, asyncWrapper(deleteProduct));
 module.exports = { productsRouters: router };

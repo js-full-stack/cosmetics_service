@@ -1,13 +1,12 @@
-const { Product } = require("../db/productsShema");
 const {
   fetchProductsService,
   addProductService,
   getProductByIdService,
   updateProductByIdService,
   deleteProductByIdService,
-} = require("../services/cosmeticsStoreService");
+} = require("../services/products");
 
-const fetchProductsController = async (req, res) => {
+const fetchProducts = async (req, res) => {
   try {
     const products = await fetchProductsService();
 
@@ -17,7 +16,7 @@ const fetchProductsController = async (req, res) => {
   }
 };
 
-const addProductController = async (req, res) => {
+const addProduct = async (req, res) => {
   const { _id: userId } = req.user;
   const {
     tag,
@@ -48,7 +47,7 @@ const addProductController = async (req, res) => {
   res.json("add new product");
 };
 
-const getProductByIdController = async (req, res) => {
+const getProductById = async (req, res) => {
   const { _id: userId } = req.user;
   const { id: productId } = req.params;
   const product = await getProductByIdService(productId, userId);
@@ -58,7 +57,7 @@ const getProductByIdController = async (req, res) => {
   res.json({ product, message: "success" });
 };
 
-const updateProductByIdController = async (req, res) => {
+const updateProduct = async (req, res) => {
   const { _id: userId } = req.user;
   const { id: productId } = req.params;
   const {
@@ -92,7 +91,7 @@ const updateProductByIdController = async (req, res) => {
   res.json({ updatedProduct });
 };
 
-const deleteProductByIdController = async (req, res) => {
+const deleteProduct = async (req, res) => {
   const { _id: userId } = req.user;
   const { id: productId } = req.params;
 
@@ -106,9 +105,9 @@ const deleteProductByIdController = async (req, res) => {
 };
 
 module.exports = {
-  fetchProductsController,
-  addProductController,
-  getProductByIdController,
-  updateProductByIdController,
-  deleteProductByIdController,
+  fetchProducts,
+  addProduct,
+  getProductById,
+  updateProduct,
+  deleteProduct,
 };

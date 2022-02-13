@@ -8,15 +8,20 @@ const { authRouter } = require("./routers/authRouters");
 
 const { connectMongo } = require("./db/connect");
 const { HTTP_PORT } = require("./helpers/constants");
+const { errorHandler } = require("./helpers/errors");
 const PORT = HTTP_PORT || 8080;
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 app.use(morgan("tiny"));
+
 app.use("/products", productsRouters);
 app.use("/auth", authRouter);
+app.use(errorHandler);
 
+// server launch
 (async () => {
   try {
     await connectMongo();

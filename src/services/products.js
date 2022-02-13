@@ -1,4 +1,4 @@
-const { Product } = require("../db/productsShema");
+const { Product } = require("../schemas/product");
 
 const fetchProductsService = async () => {
   return await Product.find({});

@@ -1,17 +1,23 @@
 const jwt = require("jsonwebtoken");
+const { CustomError } = require("../helpers/errors");
 
 const authMiddlware = (req, res, next) => {
-  const [_, token] = req.headers.authorization?.split(" ");
-  if (!token) {
-    next(new Error("Please, provide a token"));
+  //* если не передан заголовок авторизации - пробразываем ошибку
+  if (!req.headers.authorization) {
+    next(new CustomError(401, "Authorization header not passed"));
   }
+
+  //* сплитим tokenType (Bearer) и token по пустой строке, деструктуризируя из в переменные
+  const [tokenType, token] = req.headers.authorization?.split(" ");
+
   try {
-    const user = jwt.decode(token, process.env.SECRET);
-    req.token = token;
-    req.user = user;
-    next();
+    //* если токен есть, декодируем его, передавая в функцию decode токен и секрет
+    const user = jwt.decode(token, process.env.SECRET); //* декодируем токен и получаем payload юзера (id)
+    req.token = token; //* записывает на request token (это необязательно)
+    req.user = user; //* записываем на request декодированные данные юзера
+    next(); //* передаем управление дальше
   } catch (error) {
-    next(new Error("Invalid token"));
+    next(new CustomError(401, "Invalid token"));
   }
 };
 

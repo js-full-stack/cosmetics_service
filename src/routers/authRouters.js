@@ -1,26 +1,22 @@
 const express = require("express");
 const router = express.Router();
+const guard = require("../helpers/guard");
 
 const {
-  regController,
-  logController,
-  getCurrentUserController,
-  logOut,
-} = require("../controllers/authController");
+  register,
+  login,
+
+  logout,
+  getCurrentUser,
+} = require("../controllers/auth");
 
 const { asyncWrapper } = require("../helpers/apiHelpers");
-const { authMiddlware } = require("../helpers/authMiddlware");
+// const { authMiddlware } = require("../helpers/authMiddlware");
 
-router.post("/register", asyncWrapper(regController));
-router.post("/login", asyncWrapper(logController));
-router.get("/current", authMiddlware, asyncWrapper(getCurrentUserController));
+router.post("/register", asyncWrapper(register));
+router.post("/login", asyncWrapper(login));
+router.get("/current", guard, asyncWrapper(getCurrentUser));
 
-router.post("/logout", authMiddlware, asyncWrapper(logOut));
-router.get("/logout", function (req, res) {
-  req.logout();
-  res.json({
-    status: "logout",
-    msg: "Please Log In again",
-  });
-});
+router.post("/logout", guard, asyncWrapper(logout));
+
 module.exports = { authRouter: router };
