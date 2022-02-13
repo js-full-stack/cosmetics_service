@@ -24,7 +24,7 @@ const userShema = new Schema(
 userShema.pre("save", async function () {
   //* если документ новый, хеширует пароль
   if (this.isNew) {
-    this.password = await bcrypt.hash(this.password, 10);
+    this.password = await bcrypt.hash(this.password, bcrypt.genSaltSync(10));
   }
 });
 
