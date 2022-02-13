@@ -1,3 +1,4 @@
+const { Product } = require("../db/productsShema");
 const {
   fetchProductsService,
   addProductService,
@@ -72,7 +73,7 @@ const updateProductByIdController = async (req, res) => {
     discount,
   } = req.body;
 
-  await updateProductByIdService(
+  const updatedProduct = await updateProductByIdService(
     productId,
     {
       tag,
@@ -88,17 +89,20 @@ const updateProductByIdController = async (req, res) => {
     userId
   );
 
-  res.json({ message: "success" });
+  res.json({ updatedProduct });
 };
 
 const deleteProductByIdController = async (req, res) => {
   const { _id: userId } = req.user;
   const { id: productId } = req.params;
-  const product = await deleteProductByIdService(productId, userId);
-  if (!product) {
-    res.status(400).json({ message: `there is not user with id ${id}` });
+
+  try {
+    await deleteProductByIdService(productId, userId);
+
+    res.json({ message: `product with id ${productId} was removed` });
+  } catch (error) {
+    res.json({ message: error.message });
   }
-  res.json({ message: "success" });
 };
 
 module.exports = {

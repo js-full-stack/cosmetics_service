@@ -1,7 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const { authMiddlware } = require("../helpers/authMiddlware");
-
 const { asyncWrapper } = require("../helpers/apiHelpers");
 const {
   fetchProductsController,
@@ -10,7 +8,7 @@ const {
   updateProductByIdController,
   deleteProductByIdController,
 } = require("../controllers/cosmeticsStoreController");
-
+const { authMiddlware } = require("../helpers/authMiddlware");
 router.use(authMiddlware);
 router.get("/", asyncWrapper(fetchProductsController));
 router.get("/:id", asyncWrapper(getProductByIdController));

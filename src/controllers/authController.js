@@ -1,3 +1,4 @@
+const { User } = require("../db/authShema");
 const { regService, logService } = require("../services/authService");
 
 const regController = async (req, res) => {
@@ -18,10 +19,17 @@ const logController = async (req, res) => {
 
   try {
     const token = await logService(email, password);
-    res.json(token);
+    res.json({ token, email });
   } catch (error) {
     res.status(401).json(error.message);
   }
 };
 
-module.exports = { regController, logController };
+const getCurrentUserController = async (req, res) => {
+  const { _id } = req.user;
+  const token = req.token;
+  const { email } = await User.findById(_id);
+  res.json({ token, email });
+};
+
+module.exports = { regController, logController, getCurrentUserController };

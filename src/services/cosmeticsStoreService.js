@@ -38,41 +38,20 @@ const getProductByIdService = async (id) => {
   return await Product.findById(id);
 };
 
-const updateProductByIdService = async (
-  productId,
-  {
-    tag,
-    category,
-    brand,
-    name,
-    description,
-    image,
-    price,
-    promotion,
-    discount,
-  },
-  userId
-) => {
+const updateProductByIdService = async (productId, productData, userId) => {
   return await Product.findOneAndUpdate(
-    { productId, userId },
-    {
-      $set: {
-        tag,
-        category,
-        brand,
-        name,
-        description,
-        image,
-        price,
-        promotion,
-        discount,
-      },
-    }
+    { _id: productId, userId },
+    { $set: productData },
+    { new: true }
   );
 };
 
-const deleteProductByIdService = async (postId, userId) => {
-  return await Product.findOneAndDelete({ postId, userId });
+const deleteProductByIdService = async (productId, userId) => {
+  const product = await Product.findOneAndDelete({ _id: productId, userId });
+  if (!product) {
+    return new Error(`product with id ${productId} was not found`);
+  }
+  return product;
 };
 
 module.exports = {

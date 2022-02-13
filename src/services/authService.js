@@ -26,4 +26,12 @@ const logService = async (email, password) => {
   return token;
 };
 
+// async updateToken(userId, token) {
+//   const data = await User.findByIdAndUpdate(userId, { token }, { new: true })
+//   if (!data) {
+//     throw new CustomErr(Status.UNAUTHORIZED, 'Not authorized')
+//   }
+//   return data
+// },
+
 module.exports = { regService, logService };
