@@ -12,8 +12,8 @@ const {
 } = require("../controllers/products");
 
 router.get("/", asyncWrapper(fetchProducts));
-router.get("/:id", asyncWrapper(addProduct));
-router.post("/", guard, asyncWrapper(getProductById));
+router.get("/:id", asyncWrapper(getProductById));
+router.post("/", guard, asyncWrapper(addProduct));
 router.put("/:id", guard, asyncWrapper(updateProduct));
 router.delete("/:id", guard, asyncWrapper(deleteProduct));
 module.exports = { productsRouters: router };

@@ -8,23 +8,24 @@ class ProductRepository {
   async getAll() {
     return await this.model.find({});
   }
-  async getById(id) {
-    return await this.model.findOne({ _id: id });
+  async getById(productId) {
+    return await Product.findById({ _id: productId });
   }
   async create(body, userId) {
-    return await this.model.create({ ...body, owner: userId });
+    return await this.model.create({ ...body, id: userId });
   }
 
-  async update(id, body) {
-    return await this.model.findByIdAndUpdate(
-      { _id: id },
-      { ...body },
+  async update(productId, body, userId) {
+    return await this.model.findOneAndUpdate(
+      { _id: productId, id: userId },
+      { $set: body },
       { new: true }
     );
   }
-  async remove(id) {
-    return await this.model.findByIdAndRemove({
-      _id: id,
+  async remove(productId, userId) {
+    return await this.model.findOneAndDelete({
+      _id: productId,
+      id: userId,
     });
   }
 }
