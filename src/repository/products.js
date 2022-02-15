@@ -5,9 +5,22 @@ class ProductRepository {
     this.model = Product;
   }
 
-  async getAll() {
-    return await this.model.find({});
+  async getAll({ skip, limit, sortBy, value }) {
+    return await this.model
+      .find({})
+      .skip(skip)
+      .limit(limit)
+      .sort({ [sortBy]: value });
   }
+
+  async getAllWithDiscount({ skip, limit }) {
+    return await this.model.find({ promotion: true }).skip(skip).limit(limit);
+  }
+
+  async findByString(value) {
+    return await this.model.find({ $text: { $search: value } });
+  }
+
   async getById(productId) {
     return await Product.findById({ _id: productId });
   }

@@ -7,8 +7,21 @@ class ProductsService {
     };
   }
 
-  async getAll() {
-    return await this.repositories.products.getAll();
+  async test(id) {
+    return await this.repositories.products.test(id);
+  }
+
+  async getAll(skip, limit, sortBy, value) {
+    return await this.repositories.products.getAll({
+      skip,
+      limit,
+      sortBy,
+      value,
+    });
+  }
+
+  async getAllWithDiscount(skip, limit) {
+    return await this.repositories.products.getAllWithDiscount({ skip, limit });
   }
 
   async getById(id) {

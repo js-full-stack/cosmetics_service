@@ -4,14 +4,18 @@ const { asyncWrapper } = require("../helpers/apiHelpers");
 const guard = require("../helpers/guard");
 
 const {
-  fetchProducts,
+  getProducts,
+  getProductsWithDiscount,
   addProduct,
   getProductById,
   updateProduct,
   deleteProduct,
+  test,
 } = require("../controllers/products");
 
-router.get("/", asyncWrapper(fetchProducts));
+router.get("/", asyncWrapper(getProducts));
+router.get("/test/", test);
+router.get("/discount", asyncWrapper(getProductsWithDiscount));
 router.get("/:id", asyncWrapper(getProductById));
 router.post("/", guard, asyncWrapper(addProduct));
 router.put("/:id", guard, asyncWrapper(updateProduct));

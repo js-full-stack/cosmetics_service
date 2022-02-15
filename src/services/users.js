@@ -1,4 +1,5 @@
 const { UsersRepository } = require("../repository");
+const { User } = require("../schemas/user");
 
 class UserService {
   constructor() {

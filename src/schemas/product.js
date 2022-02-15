@@ -30,9 +30,7 @@ const productShema = new Schema(
     discount: {
       type: Number,
     },
-    userId: {
-      type: String,
-    },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
   },
   { versionKey: false, timestamps: true }
 );
