@@ -11,12 +11,11 @@ const {
 } = require("../controllers/auth");
 
 const { asyncWrapper } = require("../helpers/apiHelpers");
-const { authMiddlware } = require("../helpers/authMiddlware");
 
 router.post("/register", asyncWrapper(register));
 router.post("/login", asyncWrapper(login));
-router.get("/current", authMiddlware, asyncWrapper(getCurrentUser));
+router.get("/current", guard, asyncWrapper(getCurrentUser));
 
-router.post("/logout", authMiddlware, asyncWrapper(logout));
+router.post("/logout", guard, asyncWrapper(logout));
 
 module.exports = { authRouter: router };
