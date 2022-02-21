@@ -2,18 +2,26 @@ const ProductsService = require("../services/products");
 
 const productsService = new ProductsService();
 
-const countProducts = async (req, res) => {
-  const result = await productsService.countProducts();
-  const count = result.length;
-  res.json({ count });
-};
+// const countProducts = async (req, res) => {
+//   const result = await productsService.countProducts();
+//   const count = result.length;
+//   res.json({ count });
+// };
 
 const getProducts = async (req, res) => {
-  let { skip = 0, limit = 10, sortBy = "price", value = 1 } = req.query;
+  let { skip, limit, sortBy = "price", value = 1 } = req.query;
   limit = limit > 50 ? 50 : limit;
   const products = await productsService.getAll(skip, limit, sortBy, value);
-
-  res.json({ message: "success", skip, limit, sortBy, value, products });
+  const totalCount = products.length;
+  res.json({
+    message: "success",
+    skip,
+    limit,
+    sortBy,
+    value,
+    totalCount,
+    products,
+  });
 };
 
 const getProductsWithDiscount = async (req, res) => {
@@ -114,7 +122,7 @@ const deleteProduct = async (req, res) => {
 module.exports = {
   getProducts,
   addProduct,
-  countProducts,
+  // countProducts,
   getProductsWithDiscount,
   getProductById,
   updateProduct,

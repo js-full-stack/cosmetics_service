@@ -7,9 +7,9 @@ class ProductsService {
     };
   }
 
-  async countProducts() {
-    return await this.repositories.products.countProducts();
-  }
+  // async countProducts() {
+  //   return await this.repositories.products.countProducts();
+  // }
 
   async getAll(skip, limit, sortBy, value) {
     return await this.repositories.products.getAll({

@@ -17,9 +17,9 @@ class ProductRepository {
     return await this.model.find({ promotion: true }).skip(skip).limit(limit);
   }
 
-  async countProducts() {
-    return await this.model.find({});
-  }
+  // async countProducts() {
+  //   return await this.model.find({});
+  // }
 
   async getById(productId) {
     return await this.model.findById({ _id: productId });
