@@ -7,8 +7,8 @@ class ProductsService {
     };
   }
 
-  async test(id) {
-    return await this.repositories.products.test(id);
+  async countProducts() {
+    return await this.repositories.products.countProducts();
   }
 
   async getAll(skip, limit, sortBy, value) {

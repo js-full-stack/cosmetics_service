@@ -2,9 +2,10 @@ const ProductsService = require("../services/products");
 
 const productsService = new ProductsService();
 
-const test = async (req, res) => {
-  const result = await productsService.test(req.params.id);
-  res.json({ result });
+const countProducts = async (req, res) => {
+  const result = await productsService.countProducts();
+  const count = result.length;
+  res.json({ count });
 };
 
 const getProducts = async (req, res) => {
@@ -113,9 +114,9 @@ const deleteProduct = async (req, res) => {
 module.exports = {
   getProducts,
   addProduct,
+  countProducts,
   getProductsWithDiscount,
   getProductById,
   updateProduct,
   deleteProduct,
-  test,
 };

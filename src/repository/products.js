@@ -17,12 +17,12 @@ class ProductRepository {
     return await this.model.find({ promotion: true }).skip(skip).limit(limit);
   }
 
-  async findByString(value) {
-    return await this.model.find({ $text: { $search: value } });
+  async countProducts() {
+    return await this.model.find({});
   }
 
   async getById(productId) {
-    return await Product.findById({ _id: productId });
+    return await this.model.findById({ _id: productId });
   }
   async create(body, userId) {
     return await this.model.create({ ...body, id: userId });
