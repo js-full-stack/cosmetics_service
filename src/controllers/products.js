@@ -8,11 +8,11 @@ const test = async (req, res) => {
 };
 
 const getProducts = async (req, res) => {
-  let { skip = 0, limit = 3, soryBy = "price", value = 1 } = req.query;
-  limit = limit > 20 ? 20 : limit;
-  const products = await productsService.getAll(skip, limit, soryBy, value);
+  let { skip = 0, limit = 10, sortBy = "price", value = 1 } = req.query;
+  limit = limit > 50 ? 50 : limit;
+  const products = await productsService.getAll(skip, limit, sortBy, value);
 
-  res.json({ message: "success", skip, limit, soryBy, value, products });
+  res.json({ message: "success", skip, limit, sortBy, value, products });
 };
 
 const getProductsWithDiscount = async (req, res) => {
