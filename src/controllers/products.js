@@ -3,8 +3,8 @@ const ProductsService = require("../services/products");
 const productsService = new ProductsService();
 
 const getProducts = async (req, res) => {
-  let { skip, limit, sortBy = "price", value = 1 } = req.query;
-  limit = limit > 50 ? 50 : limit;
+  let { skip, limit = 10, sortBy = "price", value = 1 } = req.query;
+  limit = limit > 100 ? 100 : limit;
   const products = await productsService.getAll(skip, limit, sortBy, value);
   const totalCount = await productsService.countProducts();
 
