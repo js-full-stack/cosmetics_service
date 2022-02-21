@@ -5,7 +5,6 @@ const guard = require("../helpers/guard");
 
 const {
   getProducts,
-  // countProducts,
   getProductsWithDiscount,
   addProduct,
   getProductById,
@@ -14,7 +13,6 @@ const {
 } = require("../controllers/products");
 
 router.get("/", asyncWrapper(getProducts));
-// router.get("/count", asyncWrapper(countProducts));
 router.get("/discount", asyncWrapper(getProductsWithDiscount));
 router.get("/:id", asyncWrapper(getProductById));
 router.post("/", guard, asyncWrapper(addProduct));
